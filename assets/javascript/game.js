@@ -8,7 +8,9 @@
     var word = document.getElementById("word");
     //Tracks guesses, wins and losses
     var winCount = 0;
+    wins.textContent = winCount;
     var lossCount = 0;
+    losses.textContent = lossCount;
     var guessCount = 15;
     //Tracks round number and sets current word.
     var round = 0;
@@ -58,6 +60,8 @@
             }
             //Checks if all letters in current word have been guessed (win). 
             if (correctLetters.join("") == currentWord) {
+                alert("Great Job!");
+                document.getElementById("icon").innerHTML = "<img src='assets/images/" + currentWord + ".png'>";
                 winCount++
                 wins.textContent = winCount;
                 round++
@@ -82,6 +86,7 @@
                 }
 
             } else if (guessCount == 0) {
+                alert("The coin was: " + currentWord);
                 lossCount++
                 losses.textContent = lossCount;
                 round++
