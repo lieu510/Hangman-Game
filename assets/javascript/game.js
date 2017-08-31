@@ -61,7 +61,6 @@
             //Checks if all letters in current word have been guessed (win). 
             if (correctLetters.join("") == currentWord) {
                 alert("Great Job!");
-                document.getElementById("icon").innerHTML = "<img src='assets/images/" + currentWord + ".png'>";
                 winCount++
                 wins.textContent = winCount;
                 round++
@@ -81,10 +80,12 @@
                     
                     }
                     word.textContent = correctLetters.join(" ");
+                    document.getElementById("icon").innerHTML = "<h3 id='hint'>HINT</h3>";
+                    
                 } else {
                     document.getElementById("status").innerHTML = "Game Over";
                 }
-
+            //Checks if there are no more guesses (loss).
             } else if (guessCount == 0) {
                 alert("The coin was: " + currentWord);
                 lossCount++
@@ -106,6 +107,7 @@
                     
                     }
                     word.textContent = correctLetters.join(" ");
+                    document.getElementById("icon").innerHTML = "<h3 id='hint'>HINT</h3>";
                 } else {
                     document.getElementById("status").innerHTML = "Game Over";
                 }
@@ -114,3 +116,9 @@
         } 
 
     };
+
+    //This function runs when hint is clicked.
+    var icon = document.getElementById("icon");
+    icon.onclick = function() {
+        icon.innerHTML = "<img src='assets/images/" + currentWord + ".png'>";
+    }
